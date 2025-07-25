@@ -14,12 +14,13 @@ jobs:
     unit_testing:
         name: unit testing
         strategy:
+            fail-fast: false
             matrix:
                 nodejs_versions: [18, 19, 20]
-                operating_system: [ubuntu-latest, macos-latest]
+                perating_system: [ubuntu-latest, macos-latest]
                 exclude:
-                    - nodejs_versions: 18
-                      operating_system: macos-latest
+                   - nodejs_versions: 18
+                     operating_system: macos-latest
         runs-on: ${{matrix.operating_system}}
         steps: 
         - name: checkout respository
