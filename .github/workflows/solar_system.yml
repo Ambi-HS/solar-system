@@ -16,10 +16,10 @@ jobs:
         strategy:
             fail-fast: false
             matrix:
-                nodejs_versions: [18, 19, 20]
+                nodejs_versions: [20, 21, 22]
                 operating_system: [ubuntu-latest, macos-latest]
                 exclude:
-                   - nodejs_versions: 18
+                   - nodejs_versions: 20
                      operating_system: macos-latest
         runs-on: ${{matrix.operating_system}}
         steps: 
@@ -54,7 +54,7 @@ jobs:
        - name: setup nodejs version 18
          uses: actions/setup-node@v4
          with:
-          node_version: 18
+          node_version: 20
        - name: install dependencies
          run: npm install
 
