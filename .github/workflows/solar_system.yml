@@ -40,7 +40,8 @@ jobs:
           run: npm test
 
         - name: Archive test result
-          if: failure() && (steps.unique-name.outcome == 'failure' || steps.unique-name == 'success')
+         ### if: failure() && (steps.unique-name.outcome == 'failure' || steps.unique-name == 'success') adding a always() condition beccause failure condition is running only when the previous step is failure, always() is running previous step outcome is anything
+          if: always()
           uses: actions/upload-artifact@v4
           with:
             name: mocha-test-result
