@@ -74,7 +74,7 @@ jobs:
             path: node_modules
             key: ${{ runner.os }}-node-modules-${{hashFiles('package-lock.json')}}
 
-            
+
 
        - name: install dependencies
          run: npm install
@@ -90,6 +90,19 @@ jobs:
           path: coverage
           retention-days: 5
 
+    docker: 
+      name: contanierzation
+      needs: [ unit_testing, code_coverage ]
+      runs-on: ubuntu-latest
+      steps: 
+      - name: checkout
+        uses: actions/checkout@v4
+
+      - name: Dockerhub login
+        uses: docker/login-action@v3
+        with:
+          username: $ {{ vars.DOCKER_USERNAME }}
+          password: $ {{ secrets.DOCKER_PASSWORD }}
 
          
 
