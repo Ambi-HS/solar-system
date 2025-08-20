@@ -103,6 +103,7 @@ jobs:
         with:
           username: $ {{ vars.DOCKER_USERNAME }}
           password: $ {{ secrets.DOCKER_PASSWORD }}
+          
 
          
 
